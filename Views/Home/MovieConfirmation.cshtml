@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Movie Confirmation";
+}
+<!--Confirmation page after form submits-->
+
+<div class="text-center">
+    <h1 class="display-4">Response Recorded</h1>
+</div>
+
+<div class="container">
+    <p>@Model.Title has been recorded</p>
+    <a asp-area="" asp-controller="Home" asp-action="Movies" class="btn btn-primary">Add another movie</a>
+</div>
