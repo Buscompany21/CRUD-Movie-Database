@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission_4_Assignment.Models;
 
-namespace Mission_4_Assignment.Migrations
+namespace Mission_5_Assignment.Migrations
 {
     [DbContext(typeof(MovieContext))]
     partial class MovieContextModelSnapshot : ModelSnapshot

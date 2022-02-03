@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission_4_Assignment.Models;
 
-namespace Mission_4_Assignment.Migrations
+namespace Mission_5_Assignment.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20220127025234_Initial")]
+    [Migration("20220203022755_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
