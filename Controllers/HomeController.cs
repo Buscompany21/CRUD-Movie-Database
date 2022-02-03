@@ -28,7 +28,7 @@ namespace Mission_4_Assignment.Controllers
         [HttpGet]
         public IActionResult Movies ()
         {
-            ViewBag.categories = _movieContext.Categories.ToList();
+            ViewBag.Categories = _movieContext.Categories.ToList();
             return View();
         }
 

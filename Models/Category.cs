@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Mission_5_Assignment.Models
+namespace Mission_4_Assignment.Models
 {
     public class Category
     {
