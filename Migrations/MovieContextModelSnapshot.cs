@@ -20,9 +20,8 @@ namespace Mission_5_Assignment.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Director")
                         .IsRequired()
@@ -47,13 +46,15 @@ namespace Mission_5_Assignment.Migrations
 
                     b.HasKey("Title");
 
+                    b.HasIndex("CategoryID");
+
                     b.ToTable("Responses");
 
                     b.HasData(
                         new
                         {
                             Title = "Batman",
-                            Category = "Action/Adventure",
+                            CategoryID = 1,
                             Director = "Tim Burton",
                             Edited = false,
                             LentTo = "",
@@ -64,7 +65,7 @@ namespace Mission_5_Assignment.Migrations
                         new
                         {
                             Title = "Die Hard",
-                            Category = "Action/Adventure",
+                            CategoryID = 1,
                             Director = "John McTiernan",
                             Edited = true,
                             LentTo = "",
@@ -75,7 +76,7 @@ namespace Mission_5_Assignment.Migrations
                         new
                         {
                             Title = "Ocean's Eleven",
-                            Category = "Action/Adventure",
+                            CategoryID = 1,
                             Director = "Steven Soderbergh",
                             Edited = false,
                             LentTo = "",
@@ -83,6 +84,41 @@ namespace Mission_5_Assignment.Migrations
                             Rating = "PG-13",
                             Year = 2001
                         });
+                });
+
+            modelBuilder.Entity("Mission_5_Assignment.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Comedy"
+                        });
+                });
+
+            modelBuilder.Entity("Mission_4_Assignment.Models.MovieResponse", b =>
+                {
+                    b.HasOne("Mission_5_Assignment.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

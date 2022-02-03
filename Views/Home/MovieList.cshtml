@@ -4,8 +4,8 @@
 
 @model List<MovieResponse> 
 
-<table class="table table-bordered">
-    <thead>
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
         <tr>
             <td>Category</td>
             <td>Title</td>
@@ -30,6 +30,7 @@
             <td>@x.Edited</td>
             <td>@x.LentTo</td>
             <td>@x.Notes</td>
+            <td><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></td>
         </tr>
             }
     </tbody>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mission_5_Assignment.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,8 +9,6 @@ namespace Mission_4_Assignment.Models
 {
     public class MovieResponse
     {
-        [Required]
-        public string Category { get; set; }
         [Key]
         [Required]
         public string Title { get; set; }
@@ -23,5 +22,9 @@ namespace Mission_4_Assignment.Models
         public string LentTo { get; set; }
         [MaxLength(25)]
         public string Notes { get; set; }
+
+        [Required]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

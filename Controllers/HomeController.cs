@@ -26,10 +26,10 @@ namespace Mission_4_Assignment.Controllers
         }
 
         [HttpGet]
-        public IActionResult Movies()
+        public IActionResult Movies ()
         {
-            var movies = _movieContext.Responses.ToList();
-            return View(movies);
+            ViewBag.categories = _movieContext.Categories.ToList();
+            return View();
         }
 
         [HttpPost]
@@ -42,7 +42,9 @@ namespace Mission_4_Assignment.Controllers
 
         public IActionResult MovieList ()
         {
-            return View();
+            var moviesList = _movieContext.Responses
+                .ToList();
+            return View(moviesList);
         }
 
         public IActionResult MyPodcasts()

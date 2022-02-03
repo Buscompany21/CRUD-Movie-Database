@@ -2,7 +2,7 @@
     ViewData["Title"] = "Movies";
 }
 
-@model Mission_4_Assignment.Models.MovieResponse
+@model Mission_5_Assignment.Models.MovieResponse
 
 <!--Form page for movies-->
 <div class="text-center">
@@ -11,8 +11,14 @@
 
 <div class="container">
     <form method="post">
-        <label asp-for="Category">Category:</label>
-        <input asp-for="Category" /><br />
+        <label asp-for="CategoryID">Category:</label>
+        <select asp-for="CategoryID">
+            <option value="">Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryID">@c.CategoryName</option>
+            }
+        </select>
 
         <label asp-for="Title">Title:</label>
         <input asp-for="Title" /><br />
