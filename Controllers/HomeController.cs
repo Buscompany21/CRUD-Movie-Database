@@ -77,9 +77,19 @@ namespace Mission_4_Assignment.Controllers
             return RedirectToAction("MovieList");
         }
 
-        public IActionResult Delete ()
+        [HttpGet]
+        public IActionResult Delete (string movieEntryID)
         {
-            return View();
+            var movieEntry = _movieContext.Responses.Single(x => x.Title == movieEntryID);
+            return View(movieEntry);
+        }
+
+        [HttpPost]
+        public IActionResult Delete (MovieResponse mr)
+        {
+            _movieContext.Responses.Remove(mr);
+            _movieContext.SaveChanges();
+            return RedirectToAction("MovieList");
         }
 
         public IActionResult MyPodcasts()
