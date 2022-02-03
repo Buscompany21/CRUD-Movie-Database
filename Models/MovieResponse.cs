@@ -10,7 +10,7 @@ namespace Mission_4_Assignment.Models
     public class MovieResponse
     {
         [Key]
-        [Required]
+        [Required(ErrorMessage ="Enter a title")]
         public string Title { get; set; }
         [Required]
         public int Year { get; set; }

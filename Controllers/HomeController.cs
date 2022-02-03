@@ -36,9 +36,20 @@ namespace Mission_4_Assignment.Controllers
         [HttpPost]
         public IActionResult Movies(MovieResponse ar)
         {
-            _movieContext.Add(ar);
-            _movieContext.SaveChanges();
-            return View("MovieConfirmation", ar);
+            if (ModelState.IsValid)
+            {
+                _movieContext.Add(ar);
+                _movieContext.SaveChanges();
+
+                return View("MovieConfirmation", ar);
+            }
+            else
+            {
+                ViewBag.Categories = _movieContext.Categories.ToList();
+                return View(ar);
+            }
+
+            
         }
 
         public IActionResult MovieList ()
@@ -47,6 +58,28 @@ namespace Mission_4_Assignment.Controllers
                 .Include(x => x.Category)
                 .ToList();
             return View(moviesList);
+        }
+
+        [HttpGet]
+        public IActionResult Edit (string movieEntryID)
+        {
+            ViewBag.Categories = _movieContext.Categories.ToList();
+            var movieEntry = _movieContext.Responses.Single(x => x.Title == movieEntryID);
+            return View("Movies", movieEntry);
+        }
+
+        [HttpPost]
+        public IActionResult Edit (MovieResponse mr)
+        {
+            _movieContext.Update(mr);
+            _movieContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
+        }
+
+        public IActionResult Delete ()
+        {
+            return View();
         }
 
         public IActionResult MyPodcasts()

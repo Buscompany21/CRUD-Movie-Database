@@ -57,7 +57,7 @@ namespace Mission_4_Assignment
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{movieEntryID?}");
             });
         }
     }
